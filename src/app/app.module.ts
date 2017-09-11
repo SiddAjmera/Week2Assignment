@@ -4,15 +4,25 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { UserListItemComponent } from './components/user-list-item/user-list-item.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { NotSelectedComponent } from './components/not-selected/not-selected.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserListItemComponent,
+    UserListComponent,
+    UserDetailComponent,
+    NotSelectedComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

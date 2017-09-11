@@ -1,0 +1,13 @@
+<div class="media">
+  <div class="media-left">
+    <a [routerLink]="[user.id]">
+      <img class="media-object avatar" 
+          src="http://lorempixel.com/50/50/people/{{random}}" 
+          alt="{{ user.username }}">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{ user.name }}</h4>
+    <a [routerLink]="[user.id]">{{ user.username }} | {{ user.email }}</a>
+  </div>
+</div>
