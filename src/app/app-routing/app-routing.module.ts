@@ -1,3 +1,6 @@
+import { PrivateProfileGuard } from './../guards/private-profile.guard';
+import { RestrictedAccessComponent } from './../components/restricted-access/restricted-access.component';
+import { DisplayComponent } from './../components/display/display.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -8,8 +11,10 @@ import { UserListComponent } from './../components/user-list/user-list.component
 const appRoutes: Routes = [
   { path: 'users', component: UserListComponent, children: [
     { path: '', component: NotSelectedComponent },
-    { path: ':id', component: UserDetailComponent }
+    { path: 'restricted', component: RestrictedAccessComponent },
+    { path: ':id', canActivate: [PrivateProfileGuard], component: UserDetailComponent },
   ] },
+  { path: 'subjects', component: DisplayComponent },
   { path: '', redirectTo: '/users', pathMatch: 'full' }
 ];
 

@@ -1,3 +1,5 @@
+import { PrivateProfileGuard } from './guards/private-profile.guard';
+import { DisplayDataService } from './services/display-data.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +11,10 @@ import { UserListItemComponent } from './components/user-list-item/user-list-ite
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { NotSelectedComponent } from './components/not-selected/not-selected.component';
+import { IncrementComponent } from './components/increment/increment.component';
+import { DecrementComponent } from './components/decrement/decrement.component';
+import { DisplayComponent } from './components/display/display.component';
+import { RestrictedAccessComponent } from './components/restricted-access/restricted-access.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +22,11 @@ import { NotSelectedComponent } from './components/not-selected/not-selected.com
     UserListItemComponent,
     UserListComponent,
     UserDetailComponent,
-    NotSelectedComponent
+    NotSelectedComponent,
+    IncrementComponent,
+    DecrementComponent,
+    DisplayComponent,
+    RestrictedAccessComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +34,7 @@ import { NotSelectedComponent } from './components/not-selected/not-selected.com
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DisplayDataService, PrivateProfileGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

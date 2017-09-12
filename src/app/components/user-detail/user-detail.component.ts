@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Http, Response } from '@angular/http';
 
-import "rxjs/add/operator/map";
+import 'rxjs/add/operator/map';
 
 import { User } from './../../models/user';
 
@@ -14,7 +14,7 @@ import { User } from './../../models/user';
 })
 export class UserDetailComponent implements OnInit {
 
-  private currentUser: User
+  private currentUser: User;
   private random: number;
   private mapUrl: string;
   private isLoading: boolean = true;
@@ -25,11 +25,12 @@ export class UserDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       let currentUserId: string = params['id'];
       this.http.get('http://jsonplaceholder.typicode.com/users/' + currentUserId)
-        .map((response: Response) => { return response.json() })
+        .map((response: Response) => { return response.json(); })
         .subscribe((user: User) => {
           this.currentUser = user;
           this.random = Math.floor(Math.random() * 3)
-          this.mapUrl = 'http://maps.google.com/maps?q=' + this.currentUser.address.geo.lat + ', ' + this.currentUser.address.geo.lng + '&z=15&output=embed';
+          this.mapUrl = 'http://maps.google.com/maps?q=' + this.currentUser.address.geo.lat + ', ' +
+            this.currentUser.address.geo.lng + '&z=15&output=embed';
           this.isLoading = false;
         });
     });
