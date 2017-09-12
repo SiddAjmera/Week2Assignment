@@ -15,7 +15,8 @@ const appRoutes: Routes = [
     { path: ':id', canActivate: [PrivateProfileGuard], component: UserDetailComponent },
   ] },
   { path: 'subjects', component: DisplayComponent },
-  { path: '', redirectTo: '/users', pathMatch: 'full' }
+  { path: '', redirectTo: '/users', pathMatch: 'full' },
+  { path: '**', redirectTo: '/users', pathMatch: 'full' }
 ];
 
 @NgModule({
