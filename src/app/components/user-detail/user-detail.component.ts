@@ -29,7 +29,7 @@ export class UserDetailComponent implements OnInit {
         .subscribe((user: User) => {
           this.currentUser = user;
           this.random = Math.floor(Math.random() * 3)
-          this.mapUrl = 'http://maps.google.com/maps?q=' + this.currentUser.address.geo.lat + ', ' + this.currentUser.address.geo.lng + '&z=15&output=embed';
+          this.mapUrl = 'http://maps.google.com/maps?q=' + this.currentUser.address.geo.lng + ', ' + this.currentUser.address.geo.lat + '&z=15&output=embed';
           this.isLoading = false;
         });
     });
