@@ -1,5 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Http, Response } from '@angular/http';
 
 import "rxjs/add/operator/map";
@@ -16,8 +17,9 @@ export class UserDetailComponent implements OnInit {
   private currentUser: User
   private random: number;
   private mapUrl: string;
+  private isLoading: boolean = true;
 
-  constructor(private activatedRoute: ActivatedRoute, private http: Http) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: Http, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
@@ -28,8 +30,13 @@ export class UserDetailComponent implements OnInit {
           this.currentUser = user;
           this.random = Math.floor(Math.random() * 3)
           this.mapUrl = 'http://maps.google.com/maps?q=' + this.currentUser.address.geo.lat + ', ' + this.currentUser.address.geo.lng + '&z=15&output=embed';
+          this.isLoading = false;
         });
     });
+  }
+
+  mapURL() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.mapUrl);
   }
 
 }
